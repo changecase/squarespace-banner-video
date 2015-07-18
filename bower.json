@@ -1,0 +1,24 @@
+{
+  "name": "background-video",
+  "version": "1.0.0",
+  "authors": [
+    "changecase <jeff.ja@gmail.com>"
+  ],
+  "description": "Background videos for Squarespace banner images",
+  "main": "banner_background_video.js",
+  "keywords": [
+    "Squarespace",
+    "background",
+    "banner",
+    "video"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "spec"
+  ]
+}

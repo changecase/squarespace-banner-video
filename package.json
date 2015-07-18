@@ -1,0 +1,28 @@
+{
+  "name": "background-video",
+  "version": "1.0.0",
+  "description": "Replace Squarespace banner images with background video",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Squarespace"
+  ],
+  "author": "Jeff Jacobson-Swartfager",
+  "license": "ISC",
+  "devDependencies": {
+    "babelify": "^6.1.3",
+    "jasmine": "^2.3.1",
+    "jasmine-core": "^2.3.4",
+    "jquery": "^2.1.4",
+    "karma": "^0.12.0",
+    "karma-babel-preprocessor": "^5.2.1",
+    "karma-browserify": "^4.2.1",
+    "karma-jasmine": "^0.3.6",
+    "karma-jasmine-jquery": "^0.1.1",
+    "karma-phantomjs-launcher": "^0.2.0",
+    "phantomjs": "^1.9.17",
+    "requirejs": "^2.1.19"
+  }
+}
