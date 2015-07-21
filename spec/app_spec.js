@@ -209,6 +209,13 @@ describe("Banner Video", function () {
         expect( $('.banner-thumbnail-wrapper > #thumbnail > img') ).toBeHidden();
       });
     });
+
+    it("should hide the banner image in the Forte template", function () {
+      fixture = loadFixtures('sqs-demo-forte.html');
+
+      bannerVideo.hideBanner();
+      expect( $('#fullscreenBrowser img') ).toBeHidden();
+    });
   });
 });
 
