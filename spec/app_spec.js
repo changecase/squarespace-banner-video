@@ -193,6 +193,22 @@ describe("Banner Video", function () {
         expect( $('.banner-thumbnail-wrapper > #thumbnail > img') ).toBeHidden();
       });
     });
+
+    describe("in the Anya template", function () {
+      it("should hide the banner image on landing pages", function () {
+        fixture = loadFixtures('sqs-demo-anya.html');
+
+        bannerVideo.hideBanner();
+        expect( $('.banner-thumbnail-wrapper > #thumbnail > img') ).toBeHidden();
+      });
+
+      it("should hide the banner image on content pages", function () {
+        fixture = loadFixtures('sqs-demo-anya/location.html');
+
+        bannerVideo.hideBanner();
+        expect( $('.banner-thumbnail-wrapper > #thumbnail > img') ).toBeHidden();
+      });
+    });
   });
 });
 
