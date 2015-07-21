@@ -95,7 +95,7 @@ describe("Banner Video", function () {
       expect( $('#page-thumb img').last() ).not.toBeHidden();
     });
 
-    it("should hide the banner image on the Five template", function () {
+    it("should hide the banner image in the Five template", function () {
       fixture = loadFixtures('sqs-demo-five.html');
 
       bannerVideo.hideBanner();
@@ -160,6 +160,13 @@ describe("Banner Video", function () {
         bannerVideo.hideBanner();
         expect( $('.banner-thumbnail-wrapper > #thumbnail > img') ).toBeHidden();
       });
+    });
+
+    it("should hide the banner image in the Adirondack template", function () {
+      fixture = loadFixtures('sqs-demo-adirondack.html');
+
+      bannerVideo.hideBanner();
+      expect( $('.main-image img') ).toBeHidden();
     });
   });
 });

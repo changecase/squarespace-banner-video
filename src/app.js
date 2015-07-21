@@ -45,6 +45,7 @@ class BannerVideo {
       let banner = '';
 
       if (banner.length === 0) { banner = $('.banner-thumbnail-wrapper > #thumbnail > img'); }
+      if (banner.length === 0) { banner = $('.main-image img'); }
       if (banner.length === 0) { banner = $('#page-thumb img'); }
 
       banner.first().hide();
