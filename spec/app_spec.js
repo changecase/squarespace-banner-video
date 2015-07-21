@@ -177,6 +177,22 @@ describe("Banner Video", function () {
         expect( $('#pageWrapper img') ).toBeHidden();
       });
     });
+
+    describe("in the Horizon template", function () {
+      it("should hide the banner image on landing pages", function () {
+        fixture = loadFixtures('sqs-demo-horizon.html');
+
+        bannerVideo.hideBanner();
+        expect( $('.has-main-image img') ).toBeHidden();
+      });
+
+      it("should hide the banner image on content pages", function () {
+        fixture = loadFixtures('sqs-demo-horizon/merch.html');
+
+        bannerVideo.hideBanner();
+        expect( $('.banner-thumbnail-wrapper > #thumbnail > img') ).toBeHidden();
+      });
+    });
   });
 });
 
