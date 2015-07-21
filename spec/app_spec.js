@@ -124,6 +124,43 @@ describe("Banner Video", function () {
         expect( $('.banner-thumbnail-wrapper > #thumbnail > img') ).toBeHidden();
       });
     });
+
+    describe("in the Hayden template", function () {
+      it("should hide the banner image on landing pages", function () {
+        fixture = loadFixtures('sqs-demo-hayden.html');
+
+        bannerVideo.hideBanner();
+        expect( $('.banner-thumbnail-wrapper > #thumbnail > img') ).toBeHidden();
+      });
+
+      it("should hide the banner image on content pages", function () {
+        fixture = loadFixtures('sqs-demo-hayden/about.html');
+
+        bannerVideo.hideBanner();
+        expect( $('.banner-thumbnail-wrapper > #thumbnail > img') ).toBeHidden();
+      });
+
+      it("should hide the banner image on contact pages", function () {
+        fixture = loadFixtures('sqs-demo-hayden/hire.html');
+
+        bannerVideo.hideBanner();
+        expect( $('.banner-thumbnail-wrapper > #thumbnail > img') ).toBeHidden();
+      });
+
+      it("should hide the banner image on blog gallery pages", function () {
+        fixture = loadFixtures('sqs-demo-hayden/blog.html');
+
+        bannerVideo.hideBanner();
+        expect( $('.banner-thumbnail-wrapper > #thumbnail > img') ).toBeHidden();
+      });
+
+      it("should hide the banner image on blog posts", function () {
+        fixture = loadFixtures('sqs-demo-hayden/blog/post.html');
+
+        bannerVideo.hideBanner();
+        expect( $('.banner-thumbnail-wrapper > #thumbnail > img') ).toBeHidden();
+      });
+    });
   });
 });
 
