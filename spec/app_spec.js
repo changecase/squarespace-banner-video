@@ -99,7 +99,7 @@ describe("Banner Video", function () {
       fixture = loadFixtures('sqs-demo-five.html');
 
       bannerVideo.hideBanner();
-      expect( $('#page-thumb img') ).toBeHidden();
+      expect( $('[data-image$="5209625883_4f8813122b_o.jpg"]') ).toBeHidden();
     });
 
     describe("in the Bryant template", function () {
@@ -107,21 +107,21 @@ describe("Banner Video", function () {
         fixture = loadFixtures('sqs-demo-bryant.html');
 
         bannerVideo.hideBanner();
-        expect( $('.banner-thumbnail-wrapper > #thumbnail > img') ).toBeHidden();
+        expect( $('[data-image$="trade14_0205.jpg"]') ).toBeHidden();
       });
 
       it("should hide the banner image on availability pages", function () {
         fixture = loadFixtures('sqs-demo-bryant/availability.html');
 
         bannerVideo.hideBanner();
-        expect( $('.banner-thumbnail-wrapper > #thumbnail > img') ).toBeHidden();
+        expect( $('[data-image$="20131006_Trade+128_0051.jpg"]') ).toBeHidden();
       });
 
       it("should hide the banner image on contact pages", function () {
         fixture = loadFixtures('sqs-demo-bryant/contact.html');
 
         bannerVideo.hideBanner();
-        expect( $('.banner-thumbnail-wrapper > #thumbnail > img') ).toBeHidden();
+        expect( $('[data-image$="Trade+18_0559.jpg"]') ).toBeHidden();
       });
     });
 
@@ -130,35 +130,35 @@ describe("Banner Video", function () {
         fixture = loadFixtures('sqs-demo-hayden.html');
 
         bannerVideo.hideBanner();
-        expect( $('.banner-thumbnail-wrapper > #thumbnail > img') ).toBeHidden();
+        expect( $('[data-image$="hayden-header.jpg"]') ).toBeHidden();
       });
 
       it("should hide the banner image on content pages", function () {
         fixture = loadFixtures('sqs-demo-hayden/about.html');
 
         bannerVideo.hideBanner();
-        expect( $('.banner-thumbnail-wrapper > #thumbnail > img') ).toBeHidden();
+        expect( $('[data-image$="Spaces05.jpg"]') ).toBeHidden();
       });
 
       it("should hide the banner image on contact pages", function () {
         fixture = loadFixtures('sqs-demo-hayden/hire.html');
 
         bannerVideo.hideBanner();
-        expect( $('.banner-thumbnail-wrapper > #thumbnail > img') ).toBeHidden();
+        expect( $('[data-image$="NT03.jpg"]') ).toBeHidden();
       });
 
       it("should hide the banner image on blog gallery pages", function () {
         fixture = loadFixtures('sqs-demo-hayden/blog.html');
 
         bannerVideo.hideBanner();
-        expect( $('.banner-thumbnail-wrapper > #thumbnail > img') ).toBeHidden();
+        expect( $('[data-image$="Stills22.jpg"]') ).toBeHidden();
       });
 
       it("should hide the banner image on blog posts", function () {
         fixture = loadFixtures('sqs-demo-hayden/blog/post.html');
 
         bannerVideo.hideBanner();
-        expect( $('.banner-thumbnail-wrapper > #thumbnail > img') ).toBeHidden();
+        expect( $('[data-image$="/1410881502424/"]') ).toBeHidden();
       });
     });
 
@@ -166,7 +166,7 @@ describe("Banner Video", function () {
       fixture = loadFixtures('sqs-demo-adirondack.html');
 
       bannerVideo.hideBanner();
-      expect( $('.main-image img') ).toBeHidden();
+      expect( $('[data-image$="rocks.jpg"]') ).toBeHidden();
     });
 
     describe("in the Momentum template", function () {
@@ -174,7 +174,7 @@ describe("Banner Video", function () {
         fixture = loadFixtures('sqs-demo-momentum.html');
 
         bannerVideo.hideBanner();
-        expect( $('#pageWrapper img') ).toBeHidden();
+        expect( $('[data-image$="/IMG_65044-sm.jpg"]') ).toBeHidden();
       });
     });
 
@@ -183,14 +183,14 @@ describe("Banner Video", function () {
         fixture = loadFixtures('sqs-demo-horizon.html');
 
         bannerVideo.hideBanner();
-        expect( $('.has-main-image img') ).toBeHidden();
+        expect( $('[data-image$="EbruYildiz_325_edit.jpg"]') ).toBeHidden();
       });
 
       it("should hide the banner image on content pages", function () {
         fixture = loadFixtures('sqs-demo-horizon/merch.html');
 
         bannerVideo.hideBanner();
-        expect( $('.banner-thumbnail-wrapper > #thumbnail > img') ).toBeHidden();
+        expect( $('[data-image$="EbruYildiz_508.jpg"]') ).toBeHidden();
       });
     });
 
@@ -199,14 +199,14 @@ describe("Banner Video", function () {
         fixture = loadFixtures('sqs-demo-anya.html');
 
         bannerVideo.hideBanner();
-        expect( $('.banner-thumbnail-wrapper > #thumbnail > img') ).toBeHidden();
+        expect( $('[data-image$="roshni_blog_019.jpg"]') ).toBeHidden();
       });
 
       it("should hide the banner image on content pages", function () {
         fixture = loadFixtures('sqs-demo-anya/location.html');
 
         bannerVideo.hideBanner();
-        expect( $('.banner-thumbnail-wrapper > #thumbnail > img') ).toBeHidden();
+        expect( $('[data-image$="IMG_1232.jpg"]') ).toBeHidden();
       });
     });
 
@@ -214,14 +214,30 @@ describe("Banner Video", function () {
       fixture = loadFixtures('sqs-demo-forte.html');
 
       bannerVideo.hideBanner();
-      expect( $('#fullscreenBrowser img') ).toBeHidden();
+      expect( $('[data-image$="/1401465469651/12.jpg"]') ).toBeHidden();
     });
 
     it("should hide the banner image in the Montauk template", function () {
       fixture = loadFixtures('sqs-demo-montauk.html');
 
       bannerVideo.hideBanner();
-      expect( $('#hero img') ).toBeHidden();
+      expect( $('[data-image$="/wilderness.png"]') ).toBeHidden();
+    });
+
+    describe("in the Native template", function () {
+      it("should hide the banner image on landing pages", function () {
+        fixture = loadFixtures('sqs-demo-native.html');
+
+        bannerVideo.hideBanner();
+        expect( $('[data-image-id="52f94811e4b0a41caba7514a"]') ).toBeHidden();
+      });
+
+      it("should hide the circle banner image on content pages", function () {
+        fixture = loadFixtures('sqs-demo-native/about.html');
+
+        bannerVideo.hideBanner();
+        expect( $('[data-image$="/1383938643085/30.png"]') ).toBeHidden();
+      });
     });
   });
 });
