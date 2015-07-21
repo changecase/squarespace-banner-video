@@ -168,6 +168,15 @@ describe("Banner Video", function () {
       bannerVideo.hideBanner();
       expect( $('.main-image img') ).toBeHidden();
     });
+
+    describe("in the Momentum template", function () {
+      it("should hide the banner image on landing pages", function () {
+        fixture = loadFixtures('sqs-demo-momentum.html');
+
+        bannerVideo.hideBanner();
+        expect( $('#pageWrapper img') ).toBeHidden();
+      });
+    });
   });
 });
 

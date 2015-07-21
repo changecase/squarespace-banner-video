@@ -42,7 +42,7 @@ class BannerVideo {
     if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
       return;
     } else {
-      let banner = '';
+      let banner = $('#pageWrapper img');
 
       if (banner.length === 0) { banner = $('.banner-thumbnail-wrapper > #thumbnail > img'); }
       if (banner.length === 0) { banner = $('.main-image img'); }
