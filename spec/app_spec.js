@@ -216,6 +216,13 @@ describe("Banner Video", function () {
       bannerVideo.hideBanner();
       expect( $('#fullscreenBrowser img') ).toBeHidden();
     });
+
+    it("should hide the banner image in the Montauk template", function () {
+      fixture = loadFixtures('sqs-demo-montauk.html');
+
+      bannerVideo.hideBanner();
+      expect( $('#hero img') ).toBeHidden();
+    });
   });
 });
 

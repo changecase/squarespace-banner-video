@@ -49,6 +49,7 @@ class BannerVideo {
       if (banner.length === 0) { banner = $('.main-image img'); }
       if (banner.length === 0) { banner = $('#page-thumb img'); }
       if (banner.length === 0) { banner = $('#fullscreenBrowser img'); }
+      if (banner.length === 0) { banner = $('#hero img'); }
 
       banner.first().hide();
     }
