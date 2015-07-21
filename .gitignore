@@ -1,5 +1,5 @@
 .DS_Store
-*.swp
-*.swo
-*.map
+**/*.swp
+**/*.swo
+**/*.map
 node_modules
