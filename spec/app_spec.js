@@ -124,14 +124,6 @@ describe("Banner Video", function () {
         expect( $('.banner-thumbnail-wrapper > #thumbnail > img') ).toBeHidden();
       });
     });
-
-    describe("in the Aubrey template", function () {
-      it("should hide the banner image on landing pages", function () {
-        fixture = loadFixtures('sqs-demo-aubrey.html');
-
-        bannerVideo.hideBanner();
-      });
-    });
   });
 });
 
