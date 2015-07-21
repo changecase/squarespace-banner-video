@@ -87,11 +87,50 @@ describe("Banner Video", function () {
       jasmine.getFixtures().fixturesPath = 'base/spec/javascripts/fixtures';
     });
 
+    it("should only grab the first image that matches the pattern", function () {
+      fixture = loadFixtures('dup-page_thumb-img.html');
+
+      bannerVideo.hideBanner();
+      expect( $('#page-thumb img').first() ).toBeHidden();
+      expect( $('#page-thumb img').last() ).not.toBeHidden();
+    });
+
     it("should hide the banner image on the Five template", function () {
       fixture = loadFixtures('sqs-demo-five.html');
 
       bannerVideo.hideBanner();
       expect( $('#page-thumb img') ).toBeHidden();
+    });
+
+    describe("in the Bryant template", function () {
+      it("should hide the banner image on landing pages", function () {
+        fixture = loadFixtures('sqs-demo-bryant.html');
+
+        bannerVideo.hideBanner();
+        expect( $('.banner-thumbnail-wrapper > #thumbnail > img') ).toBeHidden();
+      });
+
+      it("should hide the banner image on availability pages", function () {
+        fixture = loadFixtures('sqs-demo-bryant/availability.html');
+
+        bannerVideo.hideBanner();
+        expect( $('.banner-thumbnail-wrapper > #thumbnail > img') ).toBeHidden();
+      });
+
+      it("should hide the banner image on contact pages", function () {
+        fixture = loadFixtures('sqs-demo-bryant/contact.html');
+
+        bannerVideo.hideBanner();
+        expect( $('.banner-thumbnail-wrapper > #thumbnail > img') ).toBeHidden();
+      });
+    });
+
+    describe("in the Aubrey template", function () {
+      it("should hide the banner image on landing pages", function () {
+        fixture = loadFixtures('sqs-demo-aubrey.html');
+
+        bannerVideo.hideBanner();
+      });
     });
   });
 });

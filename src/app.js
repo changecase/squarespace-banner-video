@@ -44,10 +44,10 @@ class BannerVideo {
     } else {
       let banner = '';
 
-      console.log(banner.length);
+      if (banner.length === 0) { banner = $('.banner-thumbnail-wrapper > #thumbnail > img'); }
       if (banner.length === 0) { banner = $('#page-thumb img'); }
 
-      banner.hide();
+      banner.first().hide();
     }
   }
 };

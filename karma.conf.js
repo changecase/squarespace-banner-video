@@ -18,7 +18,7 @@ module.exports = function(config) {
       'src/**/*.js',
       'spec/**/*_spec.js',
       'vendor/**/*.js',
-      { pattern: 'spec/javascripts/fixtures/*.html', 
+      { pattern: 'spec/javascripts/fixtures/**/*.html', 
         watched: true,
         served: true,
         included: false },
