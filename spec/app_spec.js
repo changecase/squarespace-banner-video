@@ -285,6 +285,22 @@ describe("Banner Video", function () {
         expect( $('[data-image$="/1412698041180/"]') ).toBeHidden();
       });
     });
+
+    describe("in the Adversary template", function () {
+      it("should hide the banner image on landing pages", function () {
+        fixture = loadFixtures('sqs-demo-adversary.html');
+
+        bannerVideo.hideBanner();
+        expect( $('[data-image$="/8323682210_7dadf47b8c_k.jpg"]') ).toBeHidden();
+      });
+
+      it("should hide the banner image on content pages", function () {
+        fixture = loadFixtures('sqs-demo-adversary/about.html');
+
+        bannerVideo.hideBanner();
+        expect( $('[data-image$="/8323677482_ef4ab9486d_k.jpg"]') ).toBeHidden();
+      });
+    });
   });
 });
 
