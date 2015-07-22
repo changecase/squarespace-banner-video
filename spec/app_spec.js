@@ -239,6 +239,52 @@ describe("Banner Video", function () {
         expect( $('[data-image$="/1383938643085/30.png"]') ).toBeHidden();
       });
     });
+
+    describe("in the Alex template", function () {
+      it("should hide the top image on landing pages", function () {
+        fixture = loadFixtures('sqs-demo-alex.html');
+
+        bannerVideo.hideBanner();
+        expect( $('[data-image$="/img_0330-darkened.jpg"]') ).toBeHidden();
+      });
+
+      it("should hide the first image on image series pages", function () {
+        fixture = loadFixtures('sqs-demo-alex/when.html');
+
+        bannerVideo.hideBanner();
+        expect( $('[data-image$="/img_0618-edit.jpg"]') ).toBeHidden();
+      });
+
+      it("should hide the banner image on thin image pages", function () {
+        fixture = loadFixtures('sqs-demo-alex/registry.html');
+
+        bannerVideo.hideBanner();
+        expect( $('[data-image$="/img_0531.jpg"]') ).toBeHidden();
+      });
+    });
+
+    describe("in the Shift template", function () {
+      it("should hide the banner image on landing pages", function () {
+        fixture = loadFixtures('sqs-demo-shift.html');
+
+        bannerVideo.hideBanner();
+        expect( $('[data-image$="/5472462536_79320276cf_o.jpg"]') ).toBeHidden();
+      });
+
+      it("should hide the banner image on blog gallery pages", function () {
+        fixture = loadFixtures('sqs-demo-shift/blog.html');
+
+        bannerVideo.hideBanner();
+        expect( $('[data-image$="/5471873265_eec607acdf_o.jpg"]') ).toBeHidden();
+      });
+
+      it("should hide the banner image on blog posts", function () {
+        fixture = loadFixtures('sqs-demo-shift/blog/post.html');
+
+        bannerVideo.hideBanner();
+        expect( $('[data-image$="/1412698041180/"]') ).toBeHidden();
+      });
+    });
   });
 });
 

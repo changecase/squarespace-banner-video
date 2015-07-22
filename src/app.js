@@ -46,11 +46,13 @@ class BannerVideo {
 
       if (banner.length === 0) { banner = $('.banner-thumbnail-wrapper > #thumbnail > img'); }
       if (banner.length === 0) { banner = $('.has-main-image img'); }
+      if (banner.length === 0) { banner = $('.banner-image img'); }
       if (banner.length === 0) { banner = $('.main-image img'); }
       if (banner.length === 0) { banner = $('#page-thumb img'); }
       if (banner.length === 0) { banner = $('#fullscreenBrowser img'); }
       if (banner.length === 0) { banner = $('#hero img'); }
 
+      //console.log(banner.selector);
       banner.first().hide();
     }
   }
