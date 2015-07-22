@@ -301,6 +301,22 @@ describe("Banner Video", function () {
         expect( $('[data-image$="/8323677482_ef4ab9486d_k.jpg"]') ).toBeHidden();
       });
     });
+
+    describe("in the Pacific template", function () {
+      it("should hide the banner image on landing pages", function () {
+        fixture = loadFixtures('sqs-demo-pacific.html');
+
+        bannerVideo.hideBanner();
+        expect( $('[data-image$="/10748449035_09683a37e1_k.jpg"]') ).toBeHidden();
+      });
+
+      it("should hide the banner on content pages", function () {
+        fixture = loadFixtures('sqs-demo-pacific/page.html');
+
+        bannerVideo.hideBanner();
+        expect( $('[data-image$="/9226176954_72f0596f27_k.jpg"]') ).toBeHidden();
+      });
+    });
   });
 });
 
