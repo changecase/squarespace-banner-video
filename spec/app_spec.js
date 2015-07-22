@@ -317,6 +317,36 @@ describe("Banner Video", function () {
         expect( $('[data-image$="/9226176954_72f0596f27_k.jpg"]') ).toBeHidden();
       });
     });
+
+    describe("in the Fulton template", function () {
+      it("should hide the banner image on landing pages", function () {
+        fixture = loadFixtures('sqs-demo-fulton.html');
+
+        bannerVideo.hideBanner();
+        expect( $('[data-image$="/IMG_3992-1.jpg"]') ).toBeHidden();
+      });
+
+      it("should hide the banner image on blog gallery pages", function () {
+        fixture = loadFixtures('sqs-demo-fulton/blog.html');
+
+        bannerVideo.hideBanner();
+        expect( $('[data-image$="/IMG_0587-1.jpg"]') ).toBeHidden();
+      });
+
+      it("should hide the banner image on blog gallery pages", function () {
+        fixture = loadFixtures('sqs-demo-fulton/blog.html');
+
+        bannerVideo.hideBanner();
+        expect( $('[data-image$="/IMG_0587-1.jpg"]') ).toBeHidden();
+      });
+
+      it("should hide the banner image on store gallery pages", function () {
+        fixture = loadFixtures('sqs-demo-fulton/store.html');
+
+        bannerVideo.hideBanner();
+        expect( $('[data-image$="/TOP+VIEW-1.jpg"]') ).toBeHidden();
+      });
+    });
   });
 });
 
