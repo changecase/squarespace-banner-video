@@ -347,6 +347,36 @@ describe("Banner Video", function () {
         expect( $('[data-image$="/TOP+VIEW-1.jpg"]') ).toBeHidden();
       });
     });
+
+    describe("in the Marquee template", function () {
+      it("should hide the banner image on landing pages", function () {
+        fixture = loadFixtures('sqs-demo-marquee.html');
+
+        bannerVideo.hideBanner();
+        expect( $('[data-image$="/IMG_4224-retouch.jpg"]') ).toBeHidden();
+      });
+
+      it("should hide the banner image on content pages", function () {
+        fixture = loadFixtures('sqs-demo-marquee/menu.html');
+
+        bannerVideo.hideBanner();
+        expect( $('[data-image$="/IMG_4508.jpg"]') ).toBeHidden();
+      });
+
+      it("should NOT hide the banner image on blog gallery pages", function () {
+        fixture = loadFixtures('sqs-demo-marquee/blog.html');
+
+        bannerVideo.hideBanner();
+        expect( $('[data-image$="/IMG_4607_sm.jpg"]') ).not.toBeHidden();
+      });
+
+      it("should hide the banner image on blog posts", function () {
+        fixture = loadFixtures('sqs-demo-marquee/blog/post.html');
+
+        bannerVideo.hideBanner();
+        expect( $('[data-image$="/IMG_4607_sm.jpg"]') ).toBeHidden();
+      });
+    });
   });
 });
 

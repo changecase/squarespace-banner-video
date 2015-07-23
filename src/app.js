@@ -45,13 +45,15 @@ class BannerVideo {
       let banner = $('#pageWrapper img');
 
       if (banner.length === 0) { banner = $('.banner-thumbnail-wrapper > #thumbnail > img'); }
-      if (banner.length === 0) { banner = $('.has-main-image img'); }
+      if (banner.length === 0) { banner = $('#parallax-images img'); }
+      if (banner.length === 0) { banner = $('.has-main-image .main-image img'); }
+      if (banner.length === 0) { banner = $('.has-main-image .index-section-image img'); }
       if (banner.length === 0) { banner = $('.banner-image img'); }
-      if (banner.length === 0) { banner = $('.main-image img'); }
       if (banner.length === 0) { banner = $('#page-thumb img'); }
       if (banner.length === 0) { banner = $('#fullscreenBrowser img'); }
       if (banner.length === 0) { banner = $('#hero img'); }
 
+      //console.log( banner[0] ); 
       //console.log(banner.selector);
       banner.first().hide();
     }
