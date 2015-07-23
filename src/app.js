@@ -52,6 +52,8 @@ class BannerVideo {
       if (banner.length === 0) { banner = $('#page-thumb img'); }
       if (banner.length === 0) { banner = $('#fullscreenBrowser img'); }
       if (banner.length === 0) { banner = $('#hero img'); }
+      if (banner.length === 0) { banner = $('.has-banner-image .gallery-wrapper img'); }
+      if (banner.length === 0) { banner = $('.has-main-image .gallery-wrapper img'); }
 
       //console.log( banner[0] ); 
       //console.log(banner.selector);

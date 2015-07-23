@@ -377,6 +377,52 @@ describe("Banner Video", function () {
         expect( $('[data-image$="/IMG_4607_sm.jpg"]') ).toBeHidden();
       });
     });
+
+    describe("in the Bedford template", function () {
+      it("should hide the banner image on landing pages", function () {
+        fixture = loadFixtures('sqs-demo-bedford.html');
+
+        bannerVideo.hideBanner();
+        expect( $('[data-image$="/1391287287792/"]') ).toBeHidden();
+      });
+
+      it("should hide the banner image on content pages", function () {
+        fixture = loadFixtures('sqs-demo-bedford/about.html');
+
+        bannerVideo.hideBanner();
+        expect( $('[data-image$="/tumblr_mh1iruZWLf1rkz363o1_1280.jpg"]') ).toBeHidden();
+      });
+
+      it("should hide the banner image on blog gallery pages", function () {
+        fixture = loadFixtures('sqs-demo-bedford/blog.html');
+
+        bannerVideo.hideBanner();
+        expect( $('[data-image$="/tumblr_mozj7vv77C1rkz363o1_1280.jpg"]') ).toBeHidden();
+      });
+
+      it("should hide the banner image on blog posts", function () {
+        fixture = loadFixtures('sqs-demo-bedford/blog/post.html');
+
+        bannerVideo.hideBanner();
+        expect( $('[data-image$="/tumblr_mozj7vv77C1rkz363o1_1280.jpg"]') ).toBeHidden();
+      });
+    });
+
+    it("should hide the banner image in the Naomi template", function () {
+      fixture = loadFixtures('sqs-demo-naomi.html');
+
+      bannerVideo.hideBanner();
+      expect( $('[data-image$="/amanda_blog_06.jpg"]') ).toBeHidden();
+    });
+
+    describe("in the Charlotte template", function () {
+      it("should hide the banner image on landing pages", function () {
+        fixture = loadFixtures('sqs-demo-charlotte.html');
+
+        bannerVideo.hideBanner();
+        expect( $('[data-image$="/img_7297.jpg"]') ).toBeHidden();
+      });
+    });
   });
 });
 
