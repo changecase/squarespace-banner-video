@@ -1,4 +1,5 @@
 import $ from "../node_modules/jquery/dist/jquery";
+import getLocation from "../src/util";
 
 class BannerVideo {
   retrieve(uri) {
@@ -59,6 +60,14 @@ class BannerVideo {
       //console.log(banner.selector);
       banner.first().hide();
     }
+  }
+
+  replace() {
+    let json;
+
+    this.retrieve(getLocation.pathname);
+    this.parse(json);
+    this.hideBanner();
   }
 };
 

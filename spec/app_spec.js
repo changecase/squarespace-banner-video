@@ -1,5 +1,6 @@
 import $ from "../node_modules/jquery/dist/jquery";
-import BannerVideo from '../src/app.js';
+import BannerVideo from "../src/app";
+import getLocation from "../src/util";
 
 describe("Banner Video", function () {
   let bannerVideo, jsonResponse, jsonResponseNoVid, fixture;
@@ -26,6 +27,7 @@ describe("Banner Video", function () {
       "contentType": 'json',
       "responseText": jsonResponseNoVid
     });
+
   });
 
   describe("#retrieve", function () {
@@ -54,7 +56,7 @@ describe("Banner Video", function () {
         expect(bannerVideo.retrieve('/test')).toBeTruthy();
       });
 
-      it("should NOT return an object if the customType is 'video-enabled-page'", function () {
+      it("should NOT return an object if the customType isn't 'video-enabled-page'", function () {
         expect(bannerVideo.retrieve('/not/video/enabled')).toBe(false);
         expect(bannerVideo.retrieve('/does/not/exist')).toBe(false);
       });
@@ -292,6 +294,29 @@ describe("Banner Video", function () {
       it("should hide the banner image on content pages", function () {
         testHide('charlotte/accommodations.html','img_6495.jpg');
       });
+    });
+  });
+
+  describe("#replace", function () {
+    let retrieveSpy, parseSpy, hideSpy, result;
+
+    beforeEach(function () {
+      retrieveSpy = spyOn(bannerVideo, "retrieve").and.returnValue(jsonResponse);
+      parseSpy = spyOn(bannerVideo, "parse");
+      hideSpy = spyOn(bannerVideo, "hideBanner");
+      bannerVideo.replace();
+    });
+
+    it("should attempt to retrieve JSON data", function () {
+      expect(retrieveSpy).toHaveBeenCalled();
+    });
+
+    it("should parse the JSON sent back", function () {
+      expect(parseSpy).toHaveBeenCalled();
+    });
+
+    it("should hide the current banner image", function () {
+      expect(hideSpy).toHaveBeenCalled();
     });
   });
 });
