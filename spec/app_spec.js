@@ -291,27 +291,66 @@ describe("Banner Video", function () {
     });
   });
 
+  describe("#findBanner", function () {
+    it("should return the banner object", function () {
+      let fixture = loadFixtures('sqs-banner-only.html'),
+          found   = bannerVideo.findBanner();
+      expect(found[0]).toEqual($('img[data-src="/banner-image.jpg"]')[0]);
+    });
+  });
+
+  describe("#insert", function () {
+    let fixture, bannerSelector, videos, noVideos;
+
+    beforeEach(function() {
+      fixture = loadFixtures('sqs-banner-only.html');
+      bannerSelector = bannerVideo.findBanner();
+      videos = {
+        mp4:  'vid.mp4',
+        webm: 'vid.webm',
+        ogv:  'vid.ogg'
+      };
+      noVideos = {
+        mp4:  'vid.mp4',
+        webm: '',
+        ogv:  ''
+      };
+    });
+
+    it("should insert a video element into the page", function () {
+      bannerVideo.insert(videos);
+      expect($('video')).toExist();
+    });
+
+    it("should add source elements for each video source", function () {
+      bannerVideo.insert(videos);
+      expect($('video source')).toExist();
+    });
+
+    it("should only add source elements if a source is provided", function () {
+      bannerVideo.insert(noVideos);
+      expect($('source[type$="mp4"]'))     .toExist();
+      expect($('source[type$="webm"]')).not.toExist();
+      expect($('source[type$="ogg"]')) .not.toExist();
+    });
+  });
+  
   describe("#replace", function () {
-    let retrieveSpy, parseSpy, hideSpy, result;
+    let fixture;
 
     beforeEach(function () {
-      retrieveSpy = spyOn(bannerVideo, "retrieve").and.returnValue(jsonResponse);
-      parseSpy = spyOn(bannerVideo, "parse");
-      hideSpy = spyOn(bannerVideo, "hideBanner");
+      fixture = loadFixtures('sqs-banner-only.html');
+      spyOn(bannerVideo, "retrieve").and.returnValue(jsonResponse);
       spyOn(getLocation, 'pathname').and.returnValue('/test');
       bannerVideo.replace();
     });
 
-    it("should attempt to retrieve JSON data", function () {
-      expect(retrieveSpy).toHaveBeenCalled();
+    it("should hide the banner image", function () {
+      expect($('img')).toBeHidden();
     });
 
-    it("should parse the JSON sent back", function () {
-      expect(parseSpy).toHaveBeenCalled();
-    });
-
-    it("should hide the current banner image", function () {
-      expect(hideSpy).toHaveBeenCalled();
+    it("should insert the banner video", function () {
+      expect($('video')).toExist();
     });
   });
 });

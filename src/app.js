@@ -1,7 +1,8 @@
 import $ from "../node_modules/jquery/dist/jquery";
 import { getLocation } from "../src/util";
 
-let rspObj = {};
+let rspObj = {},
+    targetBanner;
 
 class BannerVideo {
   retrieve(uri, callback = false) {
@@ -41,7 +42,7 @@ class BannerVideo {
     }
 
     if (callback) {
-      callback();
+      callback(rspObj);
     } else {
       return rspObj;
     }
@@ -51,39 +52,69 @@ class BannerVideo {
     if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
       return;
     } else {
-      let banner = $('#pageWrapper .promoted-block-image img');
-
-      if (banner.length === 0) { banner = $('.banner-thumbnail-wrapper > #thumbnail > img'); }
-      if (banner.length === 0) { banner = $('#parallax-images img'); }
-      if (banner.length === 0) { banner = $('.has-main-image .main-image img'); }
-      if (banner.length === 0) { banner = $('.has-main-image .index-section-image img'); }
-      if (banner.length === 0) { banner = $('.banner-image img'); }
-      if (banner.length === 0) { banner = $('#page-thumb img'); }
-      if (banner.length === 0) { banner = $('#fullscreenBrowser img'); }
-      if (banner.length === 0) { banner = $('#hero img'); }
-      if (banner.length === 0) { banner = $('.has-banner-image .gallery-wrapper img'); }
-      if (banner.length === 0) { banner = $('.has-main-image .gallery-wrapper img'); }
-
-      //console.log( banner[0] ); 
-      //console.log(banner.selector);
-      banner.first().hide();
+      this.findBanner();
+      targetBanner.hide();
     }
+  }
+
+  insert(urlObj) {
+    let $_video = $('<video class="bannerVideo" autoplay="" loop="" preload></video>'),
+        sources = [];
+
+    if (urlObj.mp4 && ( typeof urlObj.mp4 === "string" ) && ( urlObj.mp4.length > 0 )) {
+      sources.push('<source src="/s/' + urlObj.mp4 + '" type="video/mp4">');
+    }
+    if (urlObj.webm && ( typeof urlObj.webm === "string" ) && ( urlObj.webm.length > 0 )) {
+      sources.push('<source src="/s/' + urlObj.webm + '" type="video/webm; codecs=vp8,vorbis">');
+    }
+    if (urlObj.ogv && ( typeof urlObj.ogv === "string" ) && ( urlObj.ogv.length > 0 )) {
+      sources.push('<source src="/s/' + urlObj.ogv + '" type="video/ogg; codecs=theora,vorbis">');
+    }
+
+    $_video.insertAfter(targetBanner);
+
+    $.each(sources, function(index, value) {
+      $_video.append(value);
+    });
+  }
+
+  findBanner() {
+    let banner = $('#pageWrapper .promoted-block-image img');
+
+    if (banner.length === 0) { banner = $('.banner-thumbnail-wrapper > #thumbnail > img'); }
+    if (banner.length === 0) { banner = $('#parallax-images img'); }
+    if (banner.length === 0) { banner = $('.has-main-image .main-image img'); }
+    if (banner.length === 0) { banner = $('.has-main-image .index-section-image img'); }
+    if (banner.length === 0) { banner = $('.banner-image img'); }
+    if (banner.length === 0) { banner = $('#page-thumb img'); }
+    if (banner.length === 0) { banner = $('#fullscreenBrowser img'); }
+    if (banner.length === 0) { banner = $('#hero img'); }
+    if (banner.length === 0) { banner = $('.has-banner-image .gallery-wrapper img'); }
+    if (banner.length === 0) { banner = $('.has-main-image .gallery-wrapper img'); }
+
+    //console.log( banner[0] ); 
+    //console.log(banner.selector);
+
+    targetBanner = banner.first();
+    return targetBanner;
   }
 
   replace() {
     let json,
        that = this, 
         
-        parseInstructions = function () {
-          if (rspObj.mp4.length != 0 || rspObj.ogv.length != 0 || rspObj.webm.length != 0 ) {
+        parseInstructions = function (videos) {
+          if (videos.mp4.length != 0 || videos.ogv.length != 0 || videos.webm.length != 0 ) {
+            that.findBanner();
             that.hideBanner();
+            that.insert(videos);
           } else {
             return false;
           }
         };
 
     json = that.retrieve(getLocation.pathname());
-    that.parse(json, parseInstructions());
+    that.parse(json, parseInstructions);
   }
 };
 
