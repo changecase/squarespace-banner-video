@@ -1,14 +1,15 @@
 import $ from "../node_modules/jquery/dist/jquery";
-import getLocation from "../src/util";
+import { getLocation } from "../src/util";
+
+let rspObj = {};
 
 class BannerVideo {
-  retrieve(uri) {
+  retrieve(uri, callback = false) {
     let xhr = new XMLHttpRequest(),
         rsp;
 
     xhr.onreadystatechange = function (args) {
       if (this.readyState == this.DONE) {
-        console.log(this.responseText);
         rsp = this.responseText;
       }
     };
@@ -17,14 +18,17 @@ class BannerVideo {
     xhr.send();
 
     if (xhr.status == 200) {
-      return rsp;
+      if (callback) { callback(); } 
+      else          { return rsp; }
+
     } else {
       return false;
     }
+
   }
 
-  parse(f) {
-    let rspObj = {};
+  parse(f, callback = false) {
+    let that = this;
 
     if ( f.hasOwnProperty('items') && 
          f.items[0].hasOwnProperty('customContent') &&
@@ -36,7 +40,11 @@ class BannerVideo {
       rspObj.webm = f.items[0].customContent.webmSource;
     }
 
-    return rspObj;
+    if (callback) {
+      callback();
+    } else {
+      return rspObj;
+    }
   }
 
   hideBanner() {
@@ -63,11 +71,19 @@ class BannerVideo {
   }
 
   replace() {
-    let json;
+    let json,
+       that = this, 
+        
+        parseInstructions = function () {
+          if (rspObj.mp4.length != 0 || rspObj.ogv.length != 0 || rspObj.webm.length != 0 ) {
+            that.hideBanner();
+          } else {
+            return false;
+          }
+        };
 
-    this.retrieve(getLocation.pathname);
-    this.parse(json);
-    this.hideBanner();
+    json = that.retrieve(getLocation.pathname());
+    that.parse(json, parseInstructions());
   }
 };
 

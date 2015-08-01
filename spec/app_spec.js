@@ -1,6 +1,6 @@
 import $ from "../node_modules/jquery/dist/jquery";
 import BannerVideo from "../src/app";
-import getLocation from "../src/util";
+import { getLocation } from "../src/util";
 
 describe("Banner Video", function () {
   let bannerVideo, jsonResponse, jsonResponseNoVid, fixture;
@@ -44,13 +44,7 @@ describe("Banner Video", function () {
     });
 
     describe("AJAX request", function () {
-      var consoleSpy, result;
-
-      it("should log text from the service to the console",function () {
-        consoleSpy = spyOn(console, "log");
-        result = bannerVideo.retrieve('/test');
-        expect(consoleSpy).toHaveBeenCalledWith(jsonResponse);
-      });
+      var result;
 
       it("should return an object if the customType is 'video-enabled-page'", function() {
         expect(bannerVideo.retrieve('/test')).toBeTruthy();
@@ -304,6 +298,7 @@ describe("Banner Video", function () {
       retrieveSpy = spyOn(bannerVideo, "retrieve").and.returnValue(jsonResponse);
       parseSpy = spyOn(bannerVideo, "parse");
       hideSpy = spyOn(bannerVideo, "hideBanner");
+      spyOn(getLocation, 'pathname').and.returnValue('/test');
       bannerVideo.replace();
     });
 
